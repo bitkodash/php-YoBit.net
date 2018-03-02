@@ -1,65 +1,57 @@
 <?php
-session_start(); // в шапку добавляем
-       // Дата по-русски
-function getDateRus(){
+#Copyright (C) 2018 Andrey Garkavy
+# Р Р°Р·СЂР°Р±РѕС‚Р°РєР° РЅРµ СЃР»РѕР¶РЅС‹С… СЃРєСЂРёРїС‚РѕРІ РїРѕРґ Р·Р°РєР°Р·  icq 317418   РїРёС€РёС‚Рµ С‡РµСЂРµР· СЃР°Р№С‚ https://vk.com/bitcoindash
+# Р Р°Р·СЂРµС€Р°РµС‚СЃСЏ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РІ РЅРµРєРѕРјРјРµСЂС‡РµСЃРєРёС… С†РµР»СЏС….
+session_start(); // РІ С€Р°РїРєСѓ РґРѕР±Р°РІР»СЏРµРј
+            // Р”Р°С‚Р° РїРѕ-СЂСѓСЃСЃРєРё
+function DateRussian(){
     $monthes = array(
-        1 => 'Января', 2 => 'Февраля', 3 => 'Марта', 4 => 'Апреля',
-        5 => 'Мая', 6 => 'Июня', 7 => 'Июля', 8 => 'Августа',
-        9 => 'Сентября', 10 => 'Октября', 11 => 'Ноября', 12 => 'Декабря'
+        1 => 'РЇРЅРІР°СЂСЏ', 2 => 'Р¤РµРІСЂР°Р»СЏ', 3 => 'РњР°СЂС‚Р°', 4 => 'РђРїСЂРµР»СЏ',
+        5 => 'РњР°СЏ', 6 => 'РСЋРЅСЏ', 7 => 'РСЋР»СЏ', 8 => 'РђРІРіСѓСЃС‚Р°',
+        9 => 'РЎРµРЅС‚СЏР±СЂСЏ', 10 => 'РћРєС‚СЏР±СЂСЏ', 11 => 'РќРѕСЏР±СЂСЏ', 12 => 'Р”РµРєР°Р±СЂСЏ'
     );
     return ( (int)date('d') . ' ' . $monthes[(date('n'))] . date(' Y'));
 }
 
 
-     // День недели по-русски
-function getDayRus(){
+     // Р”РµРЅСЊ РЅРµРґРµР»Рё РїРѕ-СЂСѓСЃСЃРєРё
+function   DayRussian(){
     $days = array(
-        'Воскресенье', 'Понедельник', 'Вторник', 'Среда',
-        'Четверг', 'Пятница', 'Суббота'
+        'Р’РѕСЃРєСЂРµСЃРµРЅСЊРµ', 'РџРѕРЅРµРґРµР»СЊРЅРёРє', 'Р’С‚РѕСЂРЅРёРє', 'РЎСЂРµРґР°',
+        'Р§РµС‚РІРµСЂРі', 'РџСЏС‚РЅРёС†Р°', 'РЎСѓР±Р±РѕС‚Р°'
     );
     return $days[(date('w'))];
 }
-  $rusdate = getDateRus() . ", " . getDayRus();
+  $rusdate =  DateRussian() . ", " .DayRussian();
 
 
 
 
 
-        $date=  date("m,d,Y");
+          $date=  date("m,d,Y");
         $dd= date("w", mktime(0,0,0,  $date));
-          //  $d=date("N");  //День недели
-         // $d=$d-1;
-          $days2 = array(  'Вс', 'Пн', 'Вт', 'Ср','Чт', 'Пт', 'Сб' );
-        //     var_dump( $days2);
-          $segodnya=    $days2[$dd];  //Сегодняший день недели
+        $days2 = array(  'Р’СЃ', 'РџРЅ', 'Р’С‚', 'РЎСЂ','Р§С‚', 'РџС‚', 'РЎР±' );
+        $segodnya=    $days2[$dd];  //РЎРµРіРѕРґРЅСЏС€РёР№ РґРµРЅСЊ РЅРµРґРµР»Рё
 
-
-
-
-?>
-
-
-
-
-<?php
-# Разработака не сложных скриптов под заказ  icq 317418   пишите через сайт https://vk.com/bitcoindash
- # Настройки в этом блоке.
-$komissiya=0.2;//Комиссия биржи.
-$cena_monets=0.84; //Цена монеты за еденицу.
-$order=11020;//Ордер инвест  количество монет всего.
-$procents=0.1;//Проценты  1 процент =0.01   10%= 0.1  50% = 0.5
-$day_vklad=30;//Вклад на количество дней.
-$symbol_monets="&#8381;";  //Символ монеты в формате html       BTC  =&#3647;    RUR = &#8381;
+# CONFIG BLOCK
+ # РќР°СЃС‚СЂРѕР№РєРё РІ СЌС‚РѕРј Р±Р»РѕРєРµ.
+$komissiya=0.2;//РљРѕРјРёСЃСЃРёСЏ Р±РёСЂР¶Рё.
+$cena_monets=0.50; //Р¦РµРЅР° РјРѕРЅРµС‚С‹ Р·Р° РµРґРµРЅРёС†Сѓ.
+$order=12116;//РћСЂРґРµСЂ РёРЅРІРµСЃС‚  РєРѕР»РёС‡РµСЃС‚РІРѕ РјРѕРЅРµС‚ РІСЃРµРіРѕ.
+$procents=0.1;//РџСЂРѕС†РµРЅС‚С‹  1 РїСЂРѕС†РµРЅС‚ =0.01   10%= 0.1  50% = 0.5
+$day_vklad=30;//Р’РєР»Р°Рґ РЅР° РєРѕР»РёС‡РµСЃС‚РІРѕ РґРЅРµР№.
+$symbol_monets="&#8381;";  //РЎРёРјРІРѕР» РјРѕРЅРµС‚С‹ РІ С„РѕСЂРјР°С‚Рµ html       BTC  =&#3647;    RUR = &#8381;
 $klock_icon="&#9200;";
 
-$time_reinvest="21:05";// Время начисления процентов.Понедельник  19 февраля  в 19   часов   Время просто для красоты.
-$color_procent_rub="#800000"; //Цвет суммы процентов заработанных за сутки 21:05 час + (419 р.)
-$color_total_monet="#003d99";//Колонка Всего монет
-$color_cena_monet  ="800000" ;      //Колонка Сумма Заработано Руб    / А так же проценты колонка
+$time_reinvest="21:05";// Р’СЂРµРјСЏ РЅР°С‡РёСЃР»РµРЅРёСЏ РїСЂРѕС†РµРЅС‚РѕРІ.РџРѕРЅРµРґРµР»СЊРЅРёРє  19 С„РµРІСЂР°Р»СЏ  РІ 19   С‡Р°СЃРѕРІ   Р’СЂРµРјСЏ РїСЂРѕСЃС‚Рѕ РґР»СЏ РєСЂР°СЃРѕС‚С‹.
+$color_procent_rub="#800000"; //Р¦РІРµС‚ СЃСѓРјРјС‹ РїСЂРѕС†РµРЅС‚РѕРІ Р·Р°СЂР°Р±РѕС‚Р°РЅРЅС‹С… Р·Р° СЃСѓС‚РєРё 21:05 С‡Р°СЃ + (419 СЂ.)
+$color_total_monet="#003d99";//РљРѕР»РѕРЅРєР° Р’СЃРµРіРѕ РјРѕРЅРµС‚
+$color_cena_monet  ="800000" ;      //РљРѕР»РѕРЅРєР° РЎСѓРјРјР° Р—Р°СЂР°Р±РѕС‚Р°РЅРѕ Р СѓР±    / Рђ С‚Р°Рє Р¶Рµ РїСЂРѕС†РµРЅС‚С‹ РєРѕР»РѕРЅРєР°
 $colodnedel  ="#DF7401" ;      //
-$color_reinvest_monet   ="#003d99" ;    //Колонка   заработано монет после реинвеста
+$color_reinvest_monet   ="#003d99" ;    //РљРѕР»РѕРЅРєР°   Р·Р°СЂР°Р±РѕС‚Р°РЅРѕ РјРѕРЅРµС‚ РїРѕСЃР»Рµ СЂРµРёРЅРІРµСЃС‚Р°
   $date=  date("Y-m-d");
 
+#END CONFIG BLOCK
 ?>
 
  <!doctype html>
@@ -71,24 +63,24 @@ $color_reinvest_monet   ="#003d99" ;    //Колонка   заработано монет после реинв
 	<tr>
 
 
-		 <th>Каркулятор Инвестирования монет на бирже Yobit </th>
- <th width="100"> &nbsp;</th> 	<th> Сегодня<font color='red'> <?php echo  $rusdate;  echo  '</font>   (Общий доход через '.$day_vklad.'   дней '.  $_SESSION['var'] ;  ?>)<?php echo $symbol_monets;?></th>
+		 <th>РљР°СЂРєСѓР»СЏС‚РѕСЂ РРЅРІРµСЃС‚РёСЂРѕРІР°РЅРёСЏ РјРѕРЅРµС‚ РЅР° Р±РёСЂР¶Рµ Yobit </th>
+ <th width="100"> &nbsp;</th> 	<th> РЎРµРіРѕРґРЅСЏ<font color='red'> <?php echo  $rusdate;  echo  '</font>   (РћР±С‰РёР№ РґРѕС…РѕРґ С‡РµСЂРµР· '.$day_vklad.'   РґРЅРµР№ '.  $_SESSION['var'] ;  ?>)<?php echo $symbol_monets;?></th>
 			  </tr>
 </table>
 <table class="nums">
 
 	<thead>
 	<tr>
-	   <th>День</th>
-		<th>Дата</th>
-		<th > Реинвест </th>
-		<th>Вклад</th>
-		<th>Монет   </th>
+	   <th>Р”РµРЅСЊ</th>
+		<th>Р”Р°С‚Р°</th>
+		<th > Р РµРёРЅРІРµСЃС‚ </th>
+		<th>Р’РєР»Р°Рґ</th>
+		<th>РњРѕРЅРµС‚   </th>
 			<th>+ 10%</th>
-		<th>Сумма  &#8381;</th>
-		<th>(за сутки<font color='33cc33'> <?php  echo $procents *100;?> %) </font>  </th>
-       	<th>Ком  &#8381; -(<?php  echo $komissiya;?>)  %</th>
-       <th>1 шт </th>
+		<th>РЎСѓРјРјР°  &#8381;</th>
+		<th>(Р·Р° СЃСѓС‚РєРё<font color='33cc33'> <?php  echo $procents *100;?> %) </font>  </th>
+       	<th>РљРѕРј  &#8381; -(<?php  echo $komissiya;?>)  %</th>
+       <th>1 С€С‚ </th>
 
 		</thead>
 
@@ -99,10 +91,10 @@ $color_reinvest_monet   ="#003d99" ;    //Колонка   заработано монет после реинв
 <?php
 
 
-    $cena_mon= ceil($order* $cena_monets);  //Цена 1й монеты
+    $cena_mon= ceil($order* $cena_monets);  //Р¦РµРЅР° 1Р№ РјРѕРЅРµС‚С‹
     $minus_komissiya  =   $cena_mon * $komissiya / 100;
    $tot=   ceil($cena_mon *10 / 100);      // zarabotano % posle reinvest
-   $order2 =  $order *10 / 100;      // Заработано монет после реинвеста
+   $order2 =  $order *10 / 100;      // Р—Р°СЂР°Р±РѕС‚Р°РЅРѕ РјРѕРЅРµС‚ РїРѕСЃР»Рµ СЂРµРёРЅРІРµСЃС‚Р°
 
 
 echo  $out =<<<EOFF
@@ -110,7 +102,7 @@ echo  $out =<<<EOFF
  <tr  bgcolor="#000">     <td><font color="#33ff33"># 0</font></td>
 		 <td> <font color="#33ff33"> $date   $segodnya</font> </font></td>
 		<td><a  href="" target="_blank"><font color="#33ff33">$time_reinvest $klock_icon</font></a></td>
-		<td><a  href="" target="_blank"> <font color="#33ff33"> $day_vklad дн.</font></a></td>
+		<td><a  href="" target="_blank"> <font color="#33ff33"> $day_vklad РґРЅ.</font></a></td>
 			 <td>  <font color="#33ff33"> $order</font></td>
             <td> <font color="#33ff33">   $order2 </font></td>
 	 <td>  <font color="#33ff33">  $cena_mon </font></td>
@@ -124,11 +116,11 @@ EOFF;
 
 
 
-  //    сумму помножить на процент и разделить на 100= процент  дохода.
+  //    СЃСѓРјРјСѓ РїРѕРјРЅРѕР¶РёС‚СЊ РЅР° РїСЂРѕС†РµРЅС‚ Рё СЂР°Р·РґРµР»РёС‚СЊ РЅР° 100= РїСЂРѕС†РµРЅС‚  РґРѕС…РѕРґР°.
          $minus_komissiya  =   $cena_mon * $komissiya / 100;
 
 
-          $time = strtotime($date); // Исходная дата
+          $time = strtotime($date); // РСЃС…РѕРґРЅР°СЏ РґР°С‚Р°
            $time= $time+86400;
 
 
@@ -137,7 +129,7 @@ EOFF;
            {
 
 
-                        #День недели выводим от сегодняшнего числа
+                        #Р”РµРЅСЊ РЅРµРґРµР»Рё РІС‹РІРѕРґРёРј РѕС‚ СЃРµРіРѕРґРЅСЏС€РЅРµРіРѕ С‡РёСЃР»Р°
                        //   $date=  date("m,d,Y");
                        //   $dd= date("w", mktime(0,0,0,  $date));
 
@@ -151,10 +143,10 @@ EOFF;
 
 
 
-           $order += ceil($procents* $order); //Выводим количество монет
+           $order += ceil($procents* $order); //Р’С‹РІРѕРґРёРј РєРѕР»РёС‡РµСЃС‚РІРѕ РјРѕРЅРµС‚
 
 
-                  $order2 =  $order *10 / 100;      // Заработано монет после реинвеста
+                  $order2 =  $order *10 / 100;      // Р—Р°СЂР°Р±РѕС‚Р°РЅРѕ РјРѕРЅРµС‚ РїРѕСЃР»Рµ СЂРµРёРЅРІРµСЃС‚Р°
 
 
 
@@ -163,14 +155,14 @@ EOFF;
 
 
 
-            $interval = 1 * 24 * 3600; // число секунд в 3 сутках
+            $interval = 1 * 24 * 3600; // С‡РёСЃР»Рѕ СЃРµРєСѓРЅРґ РІ 3 СЃСѓС‚РєР°С…
             $time += $interval;
 
-             $cenamonets  =    $order * $cena_monets;    //Общая цена монет.
+             $cenamonets  =    $order * $cena_monets;    //РћР±С‰Р°СЏ С†РµРЅР° РјРѕРЅРµС‚.
 
                    $cenamonets=ceil( $cenamonets);
                   $minus_komissiya  =  $cenamonets * $komissiya / 100;
-                  $minus_komissiya = number_format ( $minus_komissiya,2,'.',' ');   //Отсекаем нули после точки
+                  $minus_komissiya = number_format ( $minus_komissiya,2,'.',' ');   //РћС‚СЃРµРєР°РµРј РЅСѓР»Рё РїРѕСЃР»Рµ С‚РѕС‡РєРё
                    $tot=  ceil($cenamonets  *10 / 100);      // zarabotano % posle reinvest
 
 
@@ -194,7 +186,7 @@ echo  $out =<<<EOFF
  <tr>   <td># $ix</td>
 		<td>$date_day    <font color= $color_today>  $today </font></td>
 		<td>$time_reinvest $klock_icon</td>
-		<td>$day_vklad дн.</td>
+		<td>$day_vklad РґРЅ.</td>
 			<td  bgcolor="#ffe6cc">  <font color= $color_total_monet>$order </font></td>
 			<td   bgcolor="#ffe6cc">  <font color= $color_reinvest_monet>   $order2 </font></td>
 				<td  bgcolor="#e6fff2">  <font color= $color_cena_monet>$cenamonets</font></td>
